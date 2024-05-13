@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 from rest_framework import serializers
 from .models import Comment
 
