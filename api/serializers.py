@@ -13,7 +13,16 @@ class UserSerializer(serializers.ModelSerializer):
         return user
     
 class CommentSerializer(serializers.ModelSerializer):
+    author = serializers.SlugRelatedField(
+    read_only=True,
+    slug_field="username"
+  )
     class Meta:
         model = Comment
         fields = ["id", "content", "created_at", "author"]
         extra_kwargs = {"author": {"read_only":True}}
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["username"]
